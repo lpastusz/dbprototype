@@ -7,8 +7,12 @@
 
 module.exports = {
 
-  attributes: {
+    attributes: {
 
-  }
+        startDate      :       'date',
+        endDate        :       'date',
+        price          :       'float',
+        rentPrice      :       'float',
+        contactPerson  :       'json'
+    }
 };
-

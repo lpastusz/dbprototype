@@ -1,0 +1,22 @@
+<h1>View Pupil</h1>
+
+    <dl class='dl-horizontal'>
+	    <dt>Name: </dt> <dd><%=: data.name %> </dd>
+
+    	<dt>Surname: </dt> <dd><%= data.surname  %> </dd>
+
+    	<dt>Birthdate: </dt> <dd><%=: data.birthdate | formatDateForUser %></dd>
+
+    	<dt>Weight: </dt> <dd><%= data.rental.weight %></dd>
+
+		<dt>Height: </dt> <dd><%= data.rental.height %> </dd>
+
+		<dt>Phone: </dt> <dd><%= data.contact.phone %> </dd>
+
+		<dt>Email: </dt> <dd><%= data.contact.email %> </dd>
+
+		<dt>registrationDate: </dt> <dd><%=: data.registrationDate |formatDateForUser %> </dd>
+	</dl>
+
+    <a class='btn btn-default' href="/pupils">Back</a>
+</form>

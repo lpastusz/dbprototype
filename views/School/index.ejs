@@ -1,0 +1,27 @@
+<h1>Listing schools</h1>
+
+<table class='table'>
+  <tr>
+    <th>Name</th>
+    <th>City</th>
+    <th>Postal code</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% _.each(data, function (school) { %>
+      <tr>
+        <td><%= school.name  %></td>
+        <td><%= school.address.city  %></td>
+        <td><%= school.address.zipCode %></td>
+        <td><a href="/schools/<%= school.id %>">Show</a></td>
+        <td><a href="/schools/edit/<%= school.id %>">Edit</a></td>
+         <td><a href="/schools/remove/<%= school.id %>">Delete</a></td>
+      </tr>
+  <% }) %>
+
+</table>
+<br />
+
+<a class='btn btn-default' href="/schools/create">New School</a>

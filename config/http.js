@@ -9,6 +9,8 @@
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
  */
 
+var moment = require('moment');
+
 module.exports.http = {
 
   /****************************************************************************
@@ -83,5 +85,12 @@ module.exports.http = {
   *                                                                          *
   ***************************************************************************/
 
-  // cache: 31557600000
+  // cache: 31557600000,
+
+  locals: {
+      filters: {
+        formatDate: function(date) { return moment(date).format('YYYY-MM-DD'); },
+        formatDateForUser: function(date) { return moment(date).format('L'); }
+      }
+  }
 };

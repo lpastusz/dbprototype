@@ -1,0 +1,43 @@
+<h1>Create Pupil</h1>
+<form action="/pupils/create" method="POST">
+
+	<div class='input-group'>
+		<label for="name">Name: </label>
+		<input id="name" class='form-control' name="name" type="text" /> <br/>
+	</div>
+
+	<div class='input-group'>
+		<label for="surname">Surname: </label>
+		<input id="surname" class='form-control' name="surname" type="text" /> <br/>
+	</div>
+
+	<div class='input-group'>
+		<label for="birthdate">Birthdate: </label>
+		<input id="birthdate" class='form-control' name="birthdate" type="date" /> <br/>
+	</div>
+
+	<div class='input-group'>
+		<label for="rentalWeight">Weight: </label>
+		<input id="rentalWeight" class='form-control' name="rentalWeight" type="number" /> <br/>
+	</div>
+
+	<div class='input-group'>
+		<label for="rentalHeight">Height: </label>
+		<input id="rentalHeight" class='form-control' name="rentalHeight" type="number" /> <br/>
+	</div>
+
+
+	<div class='input-group'>
+		<label for="email">Email: </label>
+		<input id="email" class='form-control' name="contactEmail" type="email" /> <br/>
+	</div>
+
+	<div class='input-group'>
+		<label for="phone">contactPhone: </label>
+		<input id="phone" class='form-control' name="contactPhone" type="tel" /> <br/>
+	</div>
+
+	<input class='btn btn-primary' type="submit"/>
+
+    <a class='btn btn-default' href="/pupils">Back</a>
+</form>

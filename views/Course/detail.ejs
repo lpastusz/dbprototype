@@ -1,0 +1,26 @@
+<h1>View Course</h1>
+	<h2>Course detail</h2>
+
+    <dl class='dl-horizontal'>
+	    <dt>Starting date: </dt> <dd><%=: data.startDate | formatDateForUser %> </dd>
+
+    	<dt>Ending date: </dt> <dd><%=: data.endDate | formatDateForUser %> </dd>
+
+    	<dt>Price: </dt> <dd><%= data.price %></dd>
+
+    	<dt>Rental price: </dt> <dd><%= data.rentPrice %></dd>
+    </dl>
+
+    <dl class='dl-horizontal'>
+    	<h2>Contact Person</h2>
+    	<dt>Name: </dt> <dd><%= data.contactPerson.name %> </dd>
+
+    	<dt>Surname: </dt> <dd><%= data.contactPerson.surname %> </dd>
+
+    	<dt>Email: </dt> <dd><%= data.contactPerson.email %> </dd>
+
+    	<dt>Phone: </dt> <dd><%= data.contactPerson.phone %> </dd>
+    </dl>
+
+    <a class='btn btn-default' href="/courses">Back</a>
+</form>

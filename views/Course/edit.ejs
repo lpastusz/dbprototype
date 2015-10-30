@@ -1,0 +1,51 @@
+<h1>Edit Course</h1>
+<form action="/courses/edit/<%= data.id %>" method="POST">
+
+	<h2>Course detail</h2>
+
+	<div><input type='hidden' name='id' value="<%= data.id %>"></div>
+
+	<div class='input-group'>
+		<label for="startDateInput">Starting date: </label>
+		<input id="startDateInput" class='form-control' name="startDate" type="date" value="<%=: data.startDate | formatDate %>" /> <br />
+	</div>
+
+	<div class='input-group'>
+		<label for="endDateInput">Ending date: </label>
+		<input id="endDateInput" class='form-control' name="endDate" type="date" value="<%=: data.endDate | formatDate %>" /> <br />
+	</div>
+
+	<div class='input-group'>
+		<label for="price">Price </label>
+		<input id="price" class='form-control' name="price" type="text" value="<%= data.price %>" /> <br />
+	</div>
+
+	<div class='input-group'>
+		<label for="rentPrice">Renting price: </label>
+		<input id="rentPrice" class='form-control' name="rentPrice" type="text" value="<%= data.rentPrice %>" /> <br />
+	</div>
+
+
+	<h2>Contact Person</h2>
+
+	<div class='input-group'>
+		<label for="contactPersonName">Name: </label>
+		<input id="contactPersonName" class='form-control' name="contactPersonName" type="text" value="<%= data.contactPerson.name %>" /> <br />
+	</div>
+	<div class='input-group'>
+		<label for="contactPersonSurname">Surname: </label>
+		<input id="contactPersonSurname" class='form-control' name="contactPersonSurname" type="text" value="<%= data.contactPerson.surname %>" /> <br />
+	</div>
+	<div class='input-group'>
+		<label for="contactPersonEmail">Email: </label>
+		<input id="contactPersonEmail" class='form-control' name="contactPersonEmail" type="email" value="<%= data.contactPerson.email %>" /> <br />
+	</div>
+	<div class='input-group'>
+		<label for="contactPersonPhone">Phone: </label>
+		<input id="contactPersonPhone" class='form-control' name="contactPersonPhone" type="tel" value="<%= data.contactPerson.phone %>" /> <br />
+	</div>
+
+	<input class='btn btn-primary' type="submit"/>
+
+    <a class='btn btn-default' href="/courses">Back</a>
+</form>

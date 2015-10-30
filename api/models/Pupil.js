@@ -8,7 +8,11 @@
 module.exports = {
 
   attributes: {
-
+      name              :       'string',
+      surname           :       'string',
+      birthdate         :       'date',
+      rental            :       'json',
+      contact           :       'json',
+      registrationDate  :       'date'
   }
 };
-

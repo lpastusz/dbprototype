@@ -71,6 +71,12 @@
         </p>
       <% } %>
 
+      <% if (typeof error !== 'undefined') { %>
+      <div class='error-description'>
+          <%= error %>
+      </div>
+      <% } %>
+
       </div>
 
       <div class="logo">

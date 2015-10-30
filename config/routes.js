@@ -32,7 +32,29 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'GET /kurzy' : 'CourseController.getCourses',
+  'GET  /courses'               : 'CourseController.getCourses',
+  'GET  /courses/create'        : 'CourseController.getCourseCreate',
+  'POST /courses/create'        : 'CourseController.postCourseCreate',
+  'GET  /courses/:id'           : 'CourseController.getCourseDetail',
+  'GET  /courses/edit/:id'      : 'CourseController.getCourseEdit',
+  'POST /courses/edit/:id'      : 'CourseController.postCourseEdit',
+  'GET  /courses/remove/:id'    : 'CourseController.getCourseRemove',
+
+  'GET  /pupils'                : 'PupilController.getPupils',
+  'GET  /pupils/create'         : 'PupilController.getPupilCreate',
+  'POST /pupils/create'         : 'PupilController.postPupilCreate',
+  'GET  /pupils/:id'            : 'PupilController.getPupilDetail',
+  'GET  /pupils/edit/:id'       : 'PupilController.getPupilEdit',
+  'POST /pupils/edit/:id'       : 'PupilController.postPupilEdit',
+  'GET  /pupils/remove/:id'     : 'PupilController.getPupilRemove',
+
+  'GET  /schools'               : 'SchoolController.getSchools',
+  'GET  /schools/create'        : 'SchoolController.getSchoolCreate',
+  'POST /schools/create'        : 'SchoolController.postSchoolCreate',
+  'GET  /schools/:id'           : 'SchoolController.getSchoolDetail',
+  'GET  /schools/edit/:id'      : 'SchoolController.getSchoolEdit',
+  'POST /schools/edit/:id'      : 'SchoolController.postSchoolEdit',
+  'GET  /schools/remove/:id'    : 'SchoolController.getSchoolRemove',
 
   '/': {
       view: 'homepage'
