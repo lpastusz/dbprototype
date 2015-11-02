@@ -8,16 +8,16 @@
 module.exports = {
 
 	getSchools : function(req, res) {
-		School.find({}).exec(function schoolsFound(err, result) {
+		School.find({}).exec(function schoolsFound(err, school) {
 
-			if (err) { return res.view('500'); }
+			if (err) { return res.showView('500'); }
 
-			res.view('School/index', { data: result });
+			res.showView('School/index', { schools: school });
 		});
 	},
 
 	getSchoolCreate: function(req,res) {
-		res.view('School/create');
+		res.showView('School/create');
 	},
 
 	postSchoolCreate: function(req,res) {
@@ -35,7 +35,7 @@ module.exports = {
 
 	  	School.create(newSchool, function schoolCreated (err, school) {
 
-	  		if (err) return res.view('500', { error : err });
+	  		if (err) return res.showView('500', { error : err });
 
 	  		res.redirect('/schools/'+ school.id);
 	  	});
@@ -44,29 +44,29 @@ module.exports = {
 	getSchoolDetail : function(req, res) {
 		var id = req.param('id')
 
-	  	if (!id) return res.view('404');
+	  	if (!id) return res.showView('404');
 
 	  	School.findOne(id, function schoolFound(err, school) {
 
-	  		if(err) { return res.view('500'); }
-			if(!school) { return res.view('404'); }
+	  		if(err) { return res.showView('500'); }
+			if(!school) { return res.showView('404'); }
 
 
-	  		res.view('School/detail', { data: school });
+	  		res.showView('School/detail', { school: school });
 	  	});
 	},
 
 	getSchoolEdit : function(req, res) {
 		var id = req.param('id')
 
-	  	if (!id) { return res.view('404'); }
+	  	if (!id) { return res.showView('404'); }
 
 	  	School.findOne(id, function schoolFound(err, school) {
 
-			if(err) { return res.view('500'); }
-			if(!school) { return res.view('404'); }
+			if(err) { return res.showView('500'); }
+			if(!school) { return res.showView('404'); }
 
-	  		res.view('School/edit', { data: school });
+	  		res.showView('School/edit', { school: school });
 	  	});
 	},
 
@@ -77,7 +77,7 @@ module.exports = {
 
 		console.log(updatedSchool);
 
-	    if (!id) { return res.view('404'); }
+	    if (!id) { return res.showView('404'); }
 
 		var updatedSchool = {
 			name: params.name
@@ -106,16 +106,16 @@ module.exports = {
 	getSchoolRemove : function(req, res) {
 		var id = req.param('id');
 
-		if (!id) return res.view('404');
+		if (!id) return res.showView('404');
 
 		School.findOne(id, function schoolFound(err, school) {
 
-			if(err) { return res.view('500'); }
-			if(!school) { return res.view('404'); }
+			if(err) { return res.showView('500'); }
+			if(!school) { return res.showView('404'); }
 
 			School.destroy(id, function schoolDestroyed(err) {
 
-				if(err) { return res.view('500'); }
+				if(err) { return res.showView('500'); }
 
 				return res.redirect('/schools');
 			});

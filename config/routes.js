@@ -32,6 +32,13 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  'GET  /login'                 : 'UserController.getLogin',
+  'GET  /registration'          : 'UserController.getRegistration',
+  'POST /login'                 : 'UserController.postLogin',
+  'POST /registration'          : 'UserController.postRegistration',
+  'GET  /is-logged-in'          : 'UserController.isLoggedIn',
+  'GET  /logout'                : 'UserController.getLogout',
+
   'GET  /courses'               : 'CourseController.getCourses',
   'GET  /courses/create'        : 'CourseController.getCourseCreate',
   'POST /courses/create'        : 'CourseController.postCourseCreate',
@@ -47,6 +54,8 @@ module.exports.routes = {
   'GET  /pupils/edit/:id'       : 'PupilController.getPupilEdit',
   'POST /pupils/edit/:id'       : 'PupilController.postPupilEdit',
   'GET  /pupils/remove/:id'     : 'PupilController.getPupilRemove',
+  'GET  /pupils/add-to-course/:id' : 'PupilController.getAddToCourse',
+  'POST /pupils/add-to-course/:id' : 'PupilController.postAddToCourse',
 
   'GET  /schools'               : 'SchoolController.getSchools',
   'GET  /schools/create'        : 'SchoolController.getSchoolCreate',
@@ -56,9 +65,7 @@ module.exports.routes = {
   'POST /schools/edit/:id'      : 'SchoolController.postSchoolEdit',
   'GET  /schools/remove/:id'    : 'SchoolController.getSchoolRemove',
 
-  '/': {
-      view: 'homepage'
-  }
+  'GET /'                       : 'HomepageController.getHomepage'
 
 
   /***************************************************************************

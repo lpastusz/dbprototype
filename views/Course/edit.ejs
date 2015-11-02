@@ -1,28 +1,28 @@
 <h1>Edit Course</h1>
-<form action="/courses/edit/<%= data.id %>" method="POST">
+<form action="/courses/edit/<%= locals.course.id %>" method="POST">
 
 	<h2>Course detail</h2>
 
-	<div><input type='hidden' name='id' value="<%= data.id %>"></div>
+	<div><input type='hidden' name='id' value="<%= locals.course.id %>"></div>
 
 	<div class='input-group'>
 		<label for="startDateInput">Starting date: </label>
-		<input id="startDateInput" class='form-control' name="startDate" type="date" value="<%=: data.startDate | formatDate %>" /> <br />
+		<input id="startDateInput" class='form-control' name="startDate" type="date" value="<%=: locals.course.startDate | formatDate %>" /> <br />
 	</div>
 
 	<div class='input-group'>
 		<label for="endDateInput">Ending date: </label>
-		<input id="endDateInput" class='form-control' name="endDate" type="date" value="<%=: data.endDate | formatDate %>" /> <br />
+		<input id="endDateInput" class='form-control' name="endDate" type="date" value="<%=: locals.course.endDate | formatDate %>" /> <br />
 	</div>
 
 	<div class='input-group'>
 		<label for="price">Price </label>
-		<input id="price" class='form-control' name="price" type="text" value="<%= data.price %>" /> <br />
+		<input id="price" class='form-control' name="price" type="text" value="<%= locals.course.price %>" /> <br />
 	</div>
 
 	<div class='input-group'>
 		<label for="rentPrice">Renting price: </label>
-		<input id="rentPrice" class='form-control' name="rentPrice" type="text" value="<%= data.rentPrice %>" /> <br />
+		<input id="rentPrice" class='form-control' name="rentPrice" type="text" value="<%= locals.course.rentPrice %>" /> <br />
 	</div>
 
 
@@ -30,19 +30,19 @@
 
 	<div class='input-group'>
 		<label for="contactPersonName">Name: </label>
-		<input id="contactPersonName" class='form-control' name="contactPersonName" type="text" value="<%= data.contactPerson.name %>" /> <br />
+		<input id="contactPersonName" class='form-control' name="contactPersonName" type="text" value="<%= locals.course.contactPerson.name %>" /> <br />
 	</div>
 	<div class='input-group'>
 		<label for="contactPersonSurname">Surname: </label>
-		<input id="contactPersonSurname" class='form-control' name="contactPersonSurname" type="text" value="<%= data.contactPerson.surname %>" /> <br />
+		<input id="contactPersonSurname" class='form-control' name="contactPersonSurname" type="text" value="<%= locals.course.contactPerson.surname %>" /> <br />
 	</div>
 	<div class='input-group'>
 		<label for="contactPersonEmail">Email: </label>
-		<input id="contactPersonEmail" class='form-control' name="contactPersonEmail" type="email" value="<%= data.contactPerson.email %>" /> <br />
+		<input id="contactPersonEmail" class='form-control' name="contactPersonEmail" type="email" value="<%= locals.course.contactPerson.email %>" /> <br />
 	</div>
 	<div class='input-group'>
 		<label for="contactPersonPhone">Phone: </label>
-		<input id="contactPersonPhone" class='form-control' name="contactPersonPhone" type="tel" value="<%= data.contactPerson.phone %>" /> <br />
+		<input id="contactPersonPhone" class='form-control' name="contactPersonPhone" type="tel" value="<%= locals.course.contactPerson.phone %>" /> <br />
 	</div>
 
 	<input class='btn btn-primary' type="submit"/>

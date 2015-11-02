@@ -7,19 +7,15 @@
     <th>Price</th>
     <th>Renting price</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
-  <% _.each(data, function (course) { %>
+  <% _.each(locals.courses, function (course) { %>
       <tr>
         <td><%=: course.startDate | formatDateForUser %></td>
         <td><%=: course.endDate | formatDateForUser %></td>
         <td><%= course.price %></td>
         <td><%= course.rentPrice %></td>
         <td><a href="/courses/<%= course.id %>">Show</a></td>
-        <td><a href="/courses/edit/<%= course.id %>">Edit</a></td>
-         <td><a href="/courses/remove/<%= course.id %>">Delete</a></td>
       </tr>
   <% }) %>
 

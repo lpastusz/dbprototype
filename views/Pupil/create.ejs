@@ -17,6 +17,16 @@
 	</div>
 
 	<div class='input-group'>
+		<label for="schoolId">School: </label>
+		<select class="form-control" id="schoolId" name="schoolId">
+			  <% _.each(locals.schools, function (school) { %>
+				  <option value="<%= school.id %>"><%= school.name %>, <%= school.address.city %>
+				  </option>
+			  <% }) %>
+		</select>
+	</div>
+
+	<div class='input-group'>
 		<label for="rentalWeight">Weight: </label>
 		<input id="rentalWeight" class='form-control' name="rentalWeight" type="number" /> <br/>
 	</div>
@@ -36,6 +46,7 @@
 		<label for="phone">contactPhone: </label>
 		<input id="phone" class='form-control' name="contactPhone" type="tel" /> <br/>
 	</div>
+
 
 	<input class='btn btn-primary' type="submit"/>
 

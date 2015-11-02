@@ -13,6 +13,12 @@ module.exports = {
       birthdate         :       'date',
       rental            :       'json',
       contact           :       'json',
-      registrationDate  :       'date'
+      registrationDate  :       'date',
+      courses: {
+       collection: 'course',
+       via: 'pupils',
+       dominant: true
+      },
+      school            :       { model : 'school'}
   }
 };

@@ -8,7 +8,9 @@
 module.exports = {
 
   attributes: {
-
+      login              :      'string',
+      pass               :      'string',
+      role               :      'string',
+      email              :      'string'      
   }
 };
-

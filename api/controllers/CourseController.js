@@ -8,16 +8,16 @@
 module.exports = {
 
 	getCourses : function(req, res) {
-		Course.find({}).exec(function coursesFound(err, result) {
+		Course.find({}).exec(function coursesFound(err, courses) {
 
-			if (err) { return res.view('500'); }
+			if (err) { return res.showView('500'); }
 
-			res.view('Course/index', { data: result });
+			res.showView('Course/index', { courses: courses });
 		});
 	},
 
 	getCourseCreate: function(req,res) {
-		res.view('Course/create');
+		res.showView('Course/create');
 	},
 
 	postCourseCreate: function(req,res) {
@@ -39,7 +39,7 @@ module.exports = {
 
 	  	Course.create(newCourse, function courseCreated (err, course) {
 
-	  		if (err) return res.view('500', { error : err });
+	  		if (err) return res.showView('500', { error : err });
 
 	  		res.redirect('/courses/'+ course.id);
 	  	});
@@ -48,29 +48,29 @@ module.exports = {
 	getCourseDetail : function(req, res) {
 		var id = req.param('id')
 
-	  	if (!id) return res.view('404');
+	  	if (!id) return res.showView('404');
 
-	  	Course.findOne(id, function courseFound(err, course) {
+	  	Course.findOne(id).populate('pupils').exec(function courseFound(err, course) {
 
-	  		if(err) { return res.view('500'); }
-			if(!course) { return res.view('404'); }
+	  		if(err) { return res.showView('500'); }
+			if(!course) { return res.showView('404'); }
 
+			res.showView('Course/detail', { course: course });
 
-	  		res.view('Course/detail', { data: course });
 	  	});
 	},
 
 	getCourseEdit : function(req, res) {
 		var id = req.param('id')
 
-	  	if (!id) { return res.view('404'); }
+	  	if (!id) { return res.showView('404'); }
 
 	  	Course.findOne(id, function courseFound(err, course) {
 
-			if(err) { return res.view('500'); }
-			if(!course) { return res.view('404'); }
+			if(err) { return res.showView('500'); }
+			if(!course) { return res.showView('404'); }
 
-	  		res.view('Course/edit', { data: course });
+	  		res.showView('Course/edit', { courses: course });
 	  	});
 	},
 
@@ -79,7 +79,7 @@ module.exports = {
 		var params = _.extend(req.query || {}, req.params || {}, req.body || {});
 	    var id = params.id;
 
-	    if (!id) { return res.view('404'); }
+	    if (!id) { return res.showView('404'); }
 
 		var updatedCourse = {
 			startDate: params.startDate,
@@ -103,7 +103,7 @@ module.exports = {
 	        res.redirect('/course/edit/'+id);
 	      }
 
-	      res.redirect('/course/'+id);
+	      res.redirect('/courses/'+id);
 	    });
 	},
 
@@ -111,16 +111,16 @@ module.exports = {
 	getCourseRemove : function(req, res) {
 		var id = req.param('id');
 
-		if (!id) return res.view('404');
+		if (!id) return res.showView('404');
 
 		Course.findOne(id, function courseFound(err, course) {
 
-			if(err) { return res.view('500'); }
-			if(!course) { return res.view('404'); }
+			if(err) { return res.showView('500'); }
+			if(!course) { return res.showView('404'); }
 
 			Course.destroy(id, function courseDestroyed(err) {
 
-				if(err) { return res.view('500'); }
+				if(err) { return res.showView('500'); }
 
 				return res.redirect('/courses');
 			});

@@ -60,9 +60,9 @@
         <h2>
           Something isn't right here.
         </h2>
-        <% if (typeof error !== 'undefined') { %>
+        <% if (typeof locals.error !== 'undefined') { %>
         <pre class="error"><code>
-        	<%- error %>
+        	<%- locals.error %>
         </code></pre>
         <% } else { %>
        <p class="error">
@@ -71,9 +71,9 @@
         </p>
       <% } %>
 
-      <% if (typeof error !== 'undefined') { %>
+      <% if (typeof locals.error !== 'undefined') { %>
       <div class='error-description'>
-          <%= error %>
+          <%= locals.error %>
       </div>
       <% } %>
 

@@ -17,29 +17,43 @@
     <style>
         .input-group { margin-bottom: 20px; }
         body { padding-bottom: 50px; }
+
+        .notification.error { color: darkred; padding: 15px; border: 1px solid darkred; border-radius: 5px;}
     </style>
   </head>
 
   <body>
 
-    <nav class='navbar navbar-inverse'>
+    <nav class='navbar'>
       <div class='container'>
           <div class='navbar-brand'>
-              <a href='/'>DB Prototype</a>
+              <a href='/'><img style="height: 30px; width: auto;" src="<%= locals.baseUrl %>/images/logo.png"/></a>
           </div>
-          <ul class='nav navbar-nav'>
-              <li>
-                  <a href='/courses'>Courses</a>
-              </li>
-              <li>
-                  <a href='/pupils'>Pupils</a>
-              </li>
-              <li>
-                  <a href='/schools'>Schools</a>
-              </li>
-          </ul>
+
+          <%if (locals.isLoggedIn) { %>
+              <ul class='nav navbar-nav' style="margin-top:9px;">
+                  <li>
+                      <a href='/courses'>Courses</a>
+                  </li>
+                  <li>
+                      <a href='/pupils'>Pupils</a>
+                  </li>
+                  <li>
+                      <a href='/schools'>Schools</a>
+                  </li>
+              </ul>
+              <a href="/logout" class="btn btn-sm btn-default navbar-btn" style="float:right;">Logout</a>
+          <% } else { %>
+              <a href="/login" class="btn btn-sm btn-default navbar-btn" style="float:right;">Login</a>
+          <% } %>
       </div>
   </nav>
+
+    <%if (locals.notification) { %>
+        <div class="container notification <%= locals.notification.type %>">
+            <%= locals.notification.message %>
+        </div>
+    <% } %>
 
     <div class='container'>
       <%- body %>

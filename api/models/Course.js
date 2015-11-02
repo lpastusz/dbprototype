@@ -13,6 +13,10 @@ module.exports = {
         endDate        :       'date',
         price          :       'float',
         rentPrice      :       'float',
-        contactPerson  :       'json'
+        contactPerson  :       'json',
+        pupils: {
+            collection: 'pupil',
+            via: 'courses'
+        },
     }
 };

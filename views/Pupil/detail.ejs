@@ -1,22 +1,43 @@
 <h1>View Pupil</h1>
 
+
     <dl class='dl-horizontal'>
-	    <dt>Name: </dt> <dd><%=: data.name %> </dd>
+	    <dt>Name: </dt> <dd><%=: locals.pupil.name %> </dd>
 
-    	<dt>Surname: </dt> <dd><%= data.surname  %> </dd>
+    	<dt>Surname: </dt> <dd><%= locals.pupil.surname  %> </dd>
 
-    	<dt>Birthdate: </dt> <dd><%=: data.birthdate | formatDateForUser %></dd>
+    	<dt>Birthdate: </dt> <dd><%=: locals.pupil.birthdate | formatDateForUser %></dd>
 
-    	<dt>Weight: </dt> <dd><%= data.rental.weight %></dd>
+        <dt>School: </dt> <dd><%= locals.pupil.school.name %>, <%= locals.pupil.school.address.city %></dd>
 
-		<dt>Height: </dt> <dd><%= data.rental.height %> </dd>
+    	<dt>Weight: </dt> <dd><%= locals.pupil.rental.weight %></dd>
 
-		<dt>Phone: </dt> <dd><%= data.contact.phone %> </dd>
+		<dt>Height: </dt> <dd><%= locals.pupil.rental.height %> </dd>
 
-		<dt>Email: </dt> <dd><%= data.contact.email %> </dd>
+		<dt>Phone: </dt> <dd><%= locals.pupil.contact.phone %> </dd>
 
-		<dt>registrationDate: </dt> <dd><%=: data.registrationDate |formatDateForUser %> </dd>
+		<dt>Email: </dt> <dd><%= locals.pupil.contact.email %> </dd>
+
+		<dt>registrationDate: </dt> <dd><%=: locals.pupil.registrationDate |formatDateForUser %> </dd>
+
+
+        <dt></dt><dd><a href="/pupils/add-to-course/<%= locals.pupil.id %>">Add to course</a></dd>
+        <dt></dt><dd><a href="/pupils/edit/<%= locals.pupil.id %>">Edit</a></dd>
+        <dt></dt><dd><a href="/pupils/remove/<%= locals.pupil.id %>">Delete</a></dd>
+
 	</dl>
+
+    <% if (locals.pupil.courses.length) { %>
+        <h2>Pupil's courses</h2>
+        <ul>
+            <% _.each(locals.pupil.courses, function (course) { %>
+                <li>
+                    <%=: course.startDate | formatDateForUser %> - <%=: course.endDate | formatDateForUser %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+
 
     <a class='btn btn-default' href="/pupils">Back</a>
 </form>

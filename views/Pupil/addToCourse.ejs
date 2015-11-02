@@ -1,0 +1,20 @@
+<h1>Create Pupil</h1>
+<form action="/pupils/add-to-course/<%= pupil.id %>" method="POST">
+
+	<div class='input-group'>
+		<label for="courseId">Course: </label>
+		<select class="form-control" id="courseId" name="courseId">
+			  <% _.each(locals.courses, function (course) { %>
+				  <option value="<%= course.id %>"><%=: course.startDate | formatDateForUser %> - <%=: course.endDate | formatDateForUser %>
+				  </option>
+			  <% }) %>
+		</select>
+	</div>
+
+	<input type="hidden" name="pupilId" value="<%= locals.pupil.id %>" />
+
+	<input class='btn btn-primary' type="submit"/>
+
+	<a class='btn btn-default' href="/pupils/<%= locals.pupil.id %>">Back</a>
+
+</form>

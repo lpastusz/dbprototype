@@ -6,18 +6,14 @@
     <th>Name</th>
     <th>Birthdate</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
-  <% _.each(data, function (pupil) { %>
+  <% _.each(locals.pupils, function (pupil) { %>
       <tr>
         <td><%= pupil.surname %></td>
         <td><%= pupil.name %></td>
         <td><%=: pupil.birthdate | formatDateForUser %></td>
         <td><a href="/pupils/<%= pupil.id %>">Show</a></td>
-        <td><a href="/pupils/edit/<%= pupil.id %>">Edit</a></td>
-         <td><a href="/pupils/remove/<%= pupil.id %>">Delete</a></td>
       </tr>
   <% }) %>
 
