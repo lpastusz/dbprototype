@@ -70,7 +70,7 @@ module.exports = {
 			if(err) { return res.showView('500'); }
 			if(!course) { return res.showView('404'); }
 
-	  		res.showView('Course/edit', { courses: course });
+	  		res.showView('Course/edit', { course: course });
 	  	});
 	},
 
