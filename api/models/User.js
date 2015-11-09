@@ -11,6 +11,15 @@ module.exports = {
       login              :      'string',
       pass               :      'string',
       role               :      'string',
-      email              :      'string'      
+      email              :      'string',
+
+      files	: {
+      	collection 	: 'file',
+      	via 		: 'author'
+      },
+      payments : {
+        collection  : 'payment',
+        via     : 'author'
+      }
   }
 };

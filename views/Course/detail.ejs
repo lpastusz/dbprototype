@@ -18,6 +18,7 @@
 
 		<dt></dt><dd><a href="/courses/edit/<%= locals.course.id %>">Edit</a></dd>
 		<dt></dt><dd><a href="/courses/remove/<%= locals.course.id %>">Delete</a></dd>
+        <dt></dt><dd><a href="/courses/addfile/<%= locals.course.id %>">Attach file</a></dd>
 
     </dl>
 
@@ -28,6 +29,17 @@
             <% _.each(locals.course.pupils, function (pupil) { %>
                 <li>
                     <%= pupil.surname %> <%= pupil.name %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <% if (locals.course.files.length) { %>
+        <h2>Files of the course</h2>
+        <ul>
+            <% _.each(locals.course.files, function (file) { %>
+                <li>
+                    <a href="/files/<%= file.localname %>"><%= file.filename %></a>
                 </li>
             <% }) %>
         </ul>

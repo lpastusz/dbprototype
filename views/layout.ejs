@@ -41,6 +41,9 @@
                   <li>
                       <a href='/schools'>Schools</a>
                   </li>
+                  <li>
+                      <a href='/filesPage'>Files</a>
+                  </li>
               </ul>
               <a href="/logout" class="btn btn-sm btn-default navbar-btn" style="float:right;">Logout</a>
           <% } else { %>
@@ -65,5 +68,10 @@
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/npm.js"></script>
     <!--SCRIPTS END-->
+
+    <link rel="stylesheet" type="text/css" href="/libs/jqueryui/jquery-ui.min.css">
+    <script src="/libs/jqueryui/jquery.min.js"></script>
+    <script src="/libs/jqueryui/jquery-ui.min.js"></script>
+    <script type="text/javascript">jQuery.noConflict(); jQuery("input[type=date]").datepicker({dateFormat: "yy-mm-dd"}).attr('type','text');</script>
   </body>
 </html>

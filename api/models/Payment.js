@@ -1,5 +1,5 @@
 /**
-* Files.js
+* Payment.js
 *
 * @description :: TODO: You might write a short summary of how this model works and what it represents here.
 * @docs        :: http://sailsjs.org/#!documentation/models
@@ -8,15 +8,12 @@
 module.exports = {
 
   attributes: {
-  	filename 	: 'string',
-  	localname 	: 'string',
-  	author 		: {
-  		model 	: 'user',
-  	},
-  	'courses' 	: {
-  		collection  : 	'course',
-  		via			: 	'files'
-  	}
+      price           :       'float',
+      pupil : {
+        model : 'pupil'
+      },
+      author : {
+        model : 'user'
+      }
   }
 };
-

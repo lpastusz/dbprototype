@@ -39,5 +39,29 @@
     <% } %>
 
 
+    <h2>Pupil's payments</h2>
+    <% if (locals.pupil.payments) { %>
+        <ul>
+            <% _.each(locals.pupil.payments, function (payment) { %>
+                <li>
+                    <strong><%= payment.price %></strong> inserted on <%=: payment.createdAt %>
+                    <% if (payment.author) { %>
+                        by <%= payment.author.login %>
+                    <% } %> - <a href="/pupils/<%= locals.pupil.id %>/removePayment/<%= payment.id %>">Remove</a>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <h3>Add payment</h3>
+    <form method="post" action="/pupils/addPayment/<%= locals.pupil.id %>">
+        <div class='input-group'>
+            <label for="priceInput">Price: </label>
+            <input id="priceInput" class='form-control' name="price" type="number" required /><br/>
+        </div>
+        <input class='btn btn-primary' type="submit" value="Save payment" /><br><br>
+    </form>
+
+
     <a class='btn btn-default' href="/pupils">Back</a>
 </form>

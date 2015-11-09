@@ -19,6 +19,10 @@ module.exports = {
        via: 'pupils',
        dominant: true
       },
-      school            :       { model : 'school'}
+      school            :       { model : 'school'},
+      payments : {
+        collection: 'Payment',
+        via : 'pupil' 
+      }
   }
 };

@@ -18,5 +18,10 @@ module.exports = {
             collection: 'pupil',
             via: 'courses'
         },
+
+        'files': {
+            collection: 'file',
+            via: 'courses'
+        },
     }
 };

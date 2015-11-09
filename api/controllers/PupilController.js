@@ -67,12 +67,15 @@ module.exports = {
 
 	  	Pupil.findOne(id).populate('school').populate('courses').exec(function pupilFound(err, pupil) {
 
-
 	  		if(err) { return res.showView('500'); }
 			if(!pupil) { return res.showView('404'); }
 
-
-	  		res.showView('Pupil/detail', { pupil: pupil });
+			Payment.find({pupil: pupil.id}).populate('author').exec(function(err, payments){
+				if(!err){
+					pupil.payments = payments;
+				}
+				res.showView('Pupil/detail', { pupil: pupil });
+			});
 	  	});
 	},
 
@@ -194,7 +197,7 @@ module.exports = {
 		var courseId = req.param('courseId');
 
 
-		Pupil.findOne({ id : pupilId }).populate('courses').exec(function(err, pupil) {
+		Pupil.findOne({ id : pupilId }).populate('courses').populate('payments').exec(function(err, pupil) {
 			if(err) { return res.showView('500'); }
 			if(!pupil) { return res.showView('404'); }
 
@@ -206,6 +209,44 @@ module.exports = {
 
 				res.redirect('pupils/'+pupilId);
 			});
+		})
+	},
+
+	addPayment: function (req, res) {
+		var pupilId = req.param('id');
+		var price = req.param('price');
+
+		Payment.create({
+			price: price,
+			pupil: pupilId,
+			author: req.session.me
+		}, function (err, payment) {
+
+	  		if (err) return res.showView('500', { error : err });
+
+	  		res.redirect('/pupils/'+ pupilId);
+	  	});
+		
+	},
+
+	removePayment: function (req, res) {
+		var id = req.param('id');
+		var pupilId = req.param('pupilId');
+
+		if (!id) return res.showView('404');
+
+		Payment.findOne({id: id, pupil: pupilId}, function (err, payment) {
+
+			if(err) { return res.showView('500'); }
+			if(!payment) { return res.showView('404'); }
+
+			Payment.destroy(id, function (err) {
+
+				if(err) { return res.showView('500'); }
+
+				return res.redirect('/pupils/'+pupilId);
+			});
+
 		})
 	}
 };

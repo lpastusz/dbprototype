@@ -5,20 +5,20 @@
 
 	<div class='input-group'>
 		<label for="name">Name: </label>
-		<input id="name" class='form-control' name="name" type="text" value="<%= locals.school.name %>" /> <br/>
+		<input id="name" class='form-control' name="name" type="text" required value="<%= locals.school.name %>" /> <br/>
 	</div>
 
 	<div class='input-group'>
 		<label for="street">Street: </label>
-		<input id="street" class='form-control' name="addressStreet" type="text" value="<%= locals.school.address.street %>" /> <br/>
+		<input id="street" class='form-control' name="addressStreet" type="text" required value="<%= locals.school.address.street %>" /> <br/>
 	</div>
 	<div class='input-group'>
 		<label for="city">City: </label>
-		<input id="city" class='form-control' name="addressCity" type="text" value="<%= locals.school.address.city %>" /> <br/>
+		<input id="city" class='form-control' name="addressCity" type="text" required value="<%= locals.school.address.city %>" /> <br/>
 	</div>
 	<div class='input-group'>
 		<label for="zipCode">Zip code: </label>
-		<input id="zipCode" class='form-control' name="addressZipCode" type="text" value="<%= locals.school.address.zipCode %>" /> <br/>
+		<input id="zipCode" class='form-control' name="addressZipCode" type="text" required value="<%= locals.school.address.zipCode %>" /> <br/>
 	</div>
 
 	<input class='btn btn-primary' type="submit"/>

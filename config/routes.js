@@ -46,6 +46,8 @@ module.exports.routes = {
   'GET  /courses/edit/:id'      : 'CourseController.getCourseEdit',
   'POST /courses/edit/:id'      : 'CourseController.postCourseEdit',
   'GET  /courses/remove/:id'    : 'CourseController.getCourseRemove',
+  'GET  /courses/addfile/:id'        : 'CourseController.getAddFile',
+  'POST /courses/addfile/:id'        : 'CourseController.postAddFile',
 
   'GET  /pupils'                : 'PupilController.getPupils',
   'GET  /pupils/create'         : 'PupilController.getPupilCreate',
@@ -56,6 +58,22 @@ module.exports.routes = {
   'GET  /pupils/remove/:id'     : 'PupilController.getPupilRemove',
   'GET  /pupils/add-to-course/:id' : 'PupilController.getAddToCourse',
   'POST /pupils/add-to-course/:id' : 'PupilController.postAddToCourse',
+
+  'POST  /pupils/addPayment/:id'    : 'PupilController.addPayment',
+  'GET /pupils/:pupilId/removePayment/:id' : 'PupilController.removePayment',
+
+
+  'GET  /filesPage'                   : 'FileController.filesList',
+  'POST /filesPage/upload'            : 'FileController.upload',
+  'GET  /filesPage/remove/:id'        : 'FileController.remove',
+  // 'GET  /filesPage/create'         : 'FileController.getPupilCreate',
+  // 'POST /filesPage/create'         : 'FileController.postPupilCreate',
+  // 'GET  /filesPage/:id'            : 'FileController.getPupilDetail',
+  // 'GET  /filesPage/edit/:id'       : 'FileController.getPupilEdit',
+  // 'POST /filesPage/edit/:id'       : 'FileController.postPupilEdit',
+  // 'GET  /filesPage/remove/:id'     : 'FileController.getPupilRemove',
+  // 'GET  /filesPage/add-to-course/:id' : 'FileController.getAddToCourse',
+  // 'POST /filesPage/add-to-course/:id' : 'FileController.postAddToCourse',
 
   'GET  /schools'               : 'SchoolController.getSchools',
   'GET  /schools/create'        : 'SchoolController.getSchoolCreate',

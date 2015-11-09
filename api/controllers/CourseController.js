@@ -50,7 +50,7 @@ module.exports = {
 
 	  	if (!id) return res.showView('404');
 
-	  	Course.findOne(id).populate('pupils').exec(function courseFound(err, course) {
+	  	Course.findOne(id).populate('pupils').populate('files').exec(function courseFound(err, course) {
 
 	  		if(err) { return res.showView('500'); }
 			if(!course) { return res.showView('404'); }
@@ -87,7 +87,7 @@ module.exports = {
 			price: params.price,
 			rentPrice: params.rentPrice
 		};
-		var upatedContactPerson = {
+		var updatedContactPerson = {
 			name: params.contactPersonName,
 			surname: params.contactPersonSurname,
 			email: params.contactPersonEmail,
@@ -125,6 +125,47 @@ module.exports = {
 				return res.redirect('/courses');
 			});
 
+		})
+	},
+
+	getAddFile: function(req, res) {
+
+		var id = req.param('id');
+
+		Course.findOne(id).populate('files').exec(function (err, course) {
+
+			if(err) { return res.showView('500'); }
+			if(!course) { return res.showView('404'); }
+
+			File.find().exec(function (err, files) {
+
+				if (err) { return res.showView('500'); }
+
+				res.showView('Course/addFile', { files: files, course : course });
+
+			});
+
+		});
+	},
+
+	postAddFile: function(req, res) {
+
+		var fileId = req.param('fileId');
+		var courseId = req.param('courseId');
+
+
+		Course.findOne({ id : courseId }).populate("pupils").populate('files').exec(function(err, course) {
+			if(err) { return res.showView('500'); }
+			if(!course) { return res.showView('404'); }
+
+			course.files.push(fileId);
+
+			Course.update( courseId, course, function(err, updatedCourse) {
+				if(err) { return res.showView('500'); }
+				if(!updatedCourse) { return res.showView('404'); }
+
+				res.redirect('courses/'+courseId);
+			});
 		})
 	}
 
