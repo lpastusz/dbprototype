@@ -66,14 +66,10 @@ module.exports.routes = {
   'GET  /filesPage'                   : 'FileController.filesList',
   'POST /filesPage/upload'            : 'FileController.upload',
   'GET  /filesPage/remove/:id'        : 'FileController.remove',
-  // 'GET  /filesPage/create'         : 'FileController.getPupilCreate',
-  // 'POST /filesPage/create'         : 'FileController.postPupilCreate',
-  // 'GET  /filesPage/:id'            : 'FileController.getPupilDetail',
-  // 'GET  /filesPage/edit/:id'       : 'FileController.getPupilEdit',
-  // 'POST /filesPage/edit/:id'       : 'FileController.postPupilEdit',
-  // 'GET  /filesPage/remove/:id'     : 'FileController.getPupilRemove',
-  // 'GET  /filesPage/add-to-course/:id' : 'FileController.getAddToCourse',
-  // 'POST /filesPage/add-to-course/:id' : 'FileController.postAddToCourse',
+
+  'GET  /versions'                   : 'VersionController.list',
+  'POST /versions/create'            : 'VersionController.create',
+  'GET  /versions/remove/:id'        : 'VersionController.remove',
 
   'GET  /schools'               : 'SchoolController.getSchools',
   'GET  /schools/create'        : 'SchoolController.getSchoolCreate',
@@ -82,6 +78,8 @@ module.exports.routes = {
   'GET  /schools/edit/:id'      : 'SchoolController.getSchoolEdit',
   'POST /schools/edit/:id'      : 'SchoolController.postSchoolEdit',
   'GET  /schools/remove/:id'    : 'SchoolController.getSchoolRemove',
+
+  'GET /about'                       : 'AboutController.index',
 
   'GET /'                       : 'HomepageController.getHomepage'
 
