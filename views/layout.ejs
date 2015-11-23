@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DB Prototype</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/bootstrap-theme.css">
+    <link rel="stylesheet" href="/styles/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/importer.css">
+    <!--STYLES END-->
+
+    <style>
+        .input-group { margin-bottom: 20px; }
+        body { padding-bottom: 50px; }
+
+        .notification.error { color: darkred; padding: 15px; border: 1px solid darkred; border-radius: 5px;}
+    </style>
+  </head>
+
+  <body>
+
+    <nav class='navbar'>
+      <div class='container'>
+          <div class='navbar-brand'>
+              <a href='/'><img style="height: 30px; width: auto;" src="<%= locals.baseUrl %>/images/logo.png"/></a>
+          </div>
+
+          <%if (locals.isLoggedIn) { %>
+              <ul class='nav navbar-nav' style="margin-top:9px;">
+                  <li>
+                      <a href='/courses'>Courses</a>
+                  </li>
+                  <li>
+                      <a href='/pupils'>Pupils</a>
+                  </li>
+                  <li>
+                      <a href='/schools'>Schools</a>
+                  </li>
+                  <li>
+                      <a href='/filesPage'>Files</a>
+                  </li>
+                  <li>
+                      <a href='/versions'>Versions</a>
+                  </li>
+                  <li>
+                      <a href='/about'>About</a>
+                  </li>
+              </ul>
+              <a href="/logout" class="btn btn-sm btn-default navbar-btn" style="float:right;">Logout</a>
+          <% } else { %>
+              <a href="/login" class="btn btn-sm btn-default navbar-btn" style="float:right;">Login</a>
+          <% } %>
+      </div>
+  </nav>
+
+    <%if (locals.notification) { %>
+        <div class="container notification <%= locals.notification.type %>">
+            <%= locals.notification.message %>
+        </div>
+    <% } %>
+
+    <div class='container'>
+      <%- body %>
+    </div>
+
+    <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/npm.js"></script>
+    <!--SCRIPTS END-->
+
+    <link rel="stylesheet" type="text/css" href="/libs/jqueryui/jquery-ui.min.css">
+    <script src="/libs/jqueryui/jquery.min.js"></script>
+    <script src="/libs/jqueryui/jquery-ui.min.js"></script>
+    <script type="text/javascript">jQuery.noConflict(); jQuery("input[type=date]").datepicker({dateFormat: "yy-mm-dd"}).attr('type','text');</script>
+  </body>
+</html>

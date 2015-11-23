@@ -1,0 +1,27 @@
+<h1>Edit Course</h1>
+<form action="/schools/edit/<%= locals.school.id %>" method="POST">
+
+	<div><input type='hidden' name='id' value="<%= locals.school.id %>"></div>
+
+	<div class='input-group'>
+		<label for="name">Name: </label>
+		<input id="name" class='form-control' name="name" type="text" required value="<%= locals.school.name %>" /> <br/>
+	</div>
+
+	<div class='input-group'>
+		<label for="street">Street: </label>
+		<input id="street" class='form-control' name="addressStreet" type="text" required value="<%= locals.school.address.street %>" /> <br/>
+	</div>
+	<div class='input-group'>
+		<label for="city">City: </label>
+		<input id="city" class='form-control' name="addressCity" type="text" required value="<%= locals.school.address.city %>" /> <br/>
+	</div>
+	<div class='input-group'>
+		<label for="zipCode">Zip code: </label>
+		<input id="zipCode" class='form-control' name="addressZipCode" type="text" required value="<%= locals.school.address.zipCode %>" /> <br/>
+	</div>
+
+	<input class='btn btn-primary' type="submit"/>
+
+    <a class='btn btn-default' href="/schools">Back</a>
+</form>

@@ -1,0 +1,23 @@
+<h1>Listing pupils</h1>
+
+<table class='table'>
+  <tr>
+    <th>Surname</th>
+    <th>Name</th>
+    <th>Birthdate</th>
+    <th></th>
+  </tr>
+
+  <% _.each(locals.pupils, function (pupil) { %>
+      <tr>
+        <td><%= pupil.surname %></td>
+        <td><%= pupil.name %></td>
+        <td><%=: pupil.birthdate | formatDateForUser %></td>
+        <td><a href="/pupils/<%= pupil.id %>">Show</a></td>
+      </tr>
+  <% }) %>
+
+</table>
+<br />
+
+<a class='btn btn-default' href="/pupils/create">New Pupil</a>

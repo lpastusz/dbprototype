@@ -1,0 +1,67 @@
+<h1>View Pupil</h1>
+
+
+    <dl class='dl-horizontal'>
+	    <dt>Name: </dt> <dd><%=: locals.pupil.name %> </dd>
+
+    	<dt>Surname: </dt> <dd><%= locals.pupil.surname  %> </dd>
+
+    	<dt>Birthdate: </dt> <dd><%=: locals.pupil.birthdate | formatDateForUser %></dd>
+
+        <dt>School: </dt> <dd><%= locals.pupil.school.name %>, <%= locals.pupil.school.address.city %></dd>
+
+    	<dt>Weight: </dt> <dd><%= locals.pupil.rental.weight %></dd>
+
+		<dt>Height: </dt> <dd><%= locals.pupil.rental.height %> </dd>
+
+		<dt>Phone: </dt> <dd><%= locals.pupil.contact.phone %> </dd>
+
+		<dt>Email: </dt> <dd><%= locals.pupil.contact.email %> </dd>
+
+		<dt>registrationDate: </dt> <dd><%=: locals.pupil.registrationDate |formatDateForUser %> </dd>
+
+
+        <dt></dt><dd><a href="/pupils/add-to-course/<%= locals.pupil.id %>">Add to course</a></dd>
+        <dt></dt><dd><a href="/pupils/edit/<%= locals.pupil.id %>">Edit</a></dd>
+        <dt></dt><dd><a href="/pupils/remove/<%= locals.pupil.id %>">Delete</a></dd>
+
+	</dl>
+
+    <% if (locals.pupil.courses.length) { %>
+        <h2>Pupil's courses</h2>
+        <ul>
+            <% _.each(locals.pupil.courses, function (course) { %>
+                <li>
+                    <%=: course.startDate | formatDateForUser %> - <%=: course.endDate | formatDateForUser %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+
+    <h2>Pupil's payments</h2>
+    <% if (locals.pupil.payments) { %>
+        <ul>
+            <% _.each(locals.pupil.payments, function (payment) { %>
+                <li>
+                    <strong><%= payment.price %></strong> inserted on <%=: payment.createdAt %>
+                    <% if (payment.author) { %>
+                        by <%= payment.author.login %>
+                    <% } %> - <a href="/pupils/<%= locals.pupil.id %>/removePayment/<%= payment.id %>">Remove</a>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <h3>Add payment</h3>
+    <form method="post" action="/pupils/addPayment/<%= locals.pupil.id %>">
+        <div class='input-group'>
+            <label for="priceInput">Price: </label>
+            <input id="priceInput" class='form-control' name="price" type="number" required /><br/>
+        </div>
+        <input class='btn btn-primary' type="submit" value="Save payment" /><br><br>
+    </form>
+
+
+    <a class='btn btn-default' href="/pupils">Back</a>
+</form>

@@ -1,0 +1,25 @@
+<h1>Listing courses</h1>
+
+<table class='table'>
+  <tr>
+    <th>Starting date</th>
+    <th>Endiing date</th>
+    <th>Price</th>
+    <th>Renting price</th>
+    <th></th>
+  </tr>
+
+  <% _.each(locals.courses, function (course) { %>
+      <tr>
+        <td><%=: course.startDate | formatDateForUser %></td>
+        <td><%=: course.endDate | formatDateForUser %></td>
+        <td><%= course.price %></td>
+        <td><%= course.rentPrice %></td>
+        <td><a href="/courses/<%= course.id %>">Show</a></td>
+      </tr>
+  <% }) %>
+
+</table>
+<br />
+
+<a class='btn btn-default' href="/courses/create">New Course</a>

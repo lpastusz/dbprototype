@@ -1,0 +1,17 @@
+<h1>View School</h1>
+
+    <dl class='dl-horizontal'>
+	    <dt>Name: </dt> <dd><%= locals.school.name %> </dd>
+
+    	<dt>Street: </dt> <dd><%= locals.school.address.street %></dd>
+
+    	<dt>City: </dt> <dd><%= locals.school.address.city %></dd>
+
+		<dt>Zip code: </dt> <dd><%= locals.school.address.zipCode %></dd>
+
+        <dt></dt><dd><a href="/schools/edit/<%= locals.school.id %>">Edit</a></dd>
+        <dt></dt><dd><a href="/schools/remove/<%= locals.school.id %>">Delete</a></dd>
+    </dl>
+
+    <a class='btn btn-default' href="/schools">Back</a>
+</form>

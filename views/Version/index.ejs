@@ -1,0 +1,49 @@
+<% if (locals.saved ) { %>
+  <h2 style="color: green">Files were saved successfuly</h2>
+<% } %>
+
+<h1>Versions</h1>
+
+
+<table class='table'>
+  <tr>
+    <th>Name of author</th>
+    <th>Date</th>
+    <th>Version</th>
+    <th></th>
+  </tr>
+
+  <% _.each(locals.versions, function (version) { %>
+      <tr>
+        <td><%= version.name %></td>
+        <td><%=: version.updateDate | formatDateForUser %></td>
+        <td><%= version.version %></td>
+        <td><a href="/versions/remove/<%= version.id %>">Remove</a></td>
+      </tr>
+  <% }) %>
+
+</table>
+<br />
+
+<h1>Add new version</h1>
+
+<form action="/versions/create" method="post">
+
+  <div class='input-group'>
+    <label for="name">Name: </label>
+    <input id="name" class='form-control' name="name" type="text" required value="" /><br/>
+  </div>
+
+  <div class='input-group'>
+    <label for="update">Update: </label>
+    <input id="update" class='form-control' name="updateDate" type="date" required value="" /><br/>
+  </div>
+
+  <div class='input-group'>
+    <label for="version">Version: </label>
+    <input id="version" class='form-control' name="version" type="number" required value="" /><br/>
+  </div>
+
+
+<input type="submit" value="Save">
+</form>

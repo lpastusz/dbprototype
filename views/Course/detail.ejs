@@ -1,0 +1,50 @@
+<h1>View Course</h1>
+    <dl class='dl-horizontal'>
+	    <dt>Starting date: </dt> <dd><%=: locals.course.startDate | formatDateForUser %> </dd>
+
+    	<dt>Ending date: </dt> <dd><%=: locals.course.endDate | formatDateForUser %> </dd>
+
+    	<dt>Price: </dt> <dd><%= locals.course.price %></dd>
+
+    	<dt>Rental price: </dt> <dd><%= locals.course.rentPrice %></dd>
+
+    	<dt>Contact person name: </dt> <dd><%= locals.course.contactPerson.name %> </dd>
+
+    	<dt>Contact person surname: </dt> <dd><%= locals.course.contactPerson.surname %> </dd>
+
+    	<dt>Contact person smail: </dt> <dd><%= locals.course.contactPerson.email %> </dd>
+
+    	<dt>Contact person phone: </dt> <dd><%= locals.course.contactPerson.phone %> </dd>
+
+		<dt></dt><dd><a href="/courses/edit/<%= locals.course.id %>">Edit</a></dd>
+		<dt></dt><dd><a href="/courses/remove/<%= locals.course.id %>">Delete</a></dd>
+        <dt></dt><dd><a href="/courses/addfile/<%= locals.course.id %>">Attach file</a></dd>
+
+    </dl>
+
+
+	<% if (locals.course.pupils.length) { %>
+        <h2>Students of the course</h2>
+        <ul>
+            <% _.each(locals.course.pupils, function (pupil) { %>
+                <li>
+                    <%= pupil.surname %> <%= pupil.name %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+    <% if (locals.course.files.length) { %>
+        <h2>Files of the course</h2>
+        <ul>
+            <% _.each(locals.course.files, function (file) { %>
+                <li>
+                    <a href="/files/<%= file.localname %>"><%= file.filename %></a>
+                </li>
+            <% }) %>
+        </ul>
+    <% } %>
+
+
+    <a class='btn btn-default' href="/courses">Back</a>
+</form>

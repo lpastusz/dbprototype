@@ -1,0 +1,20 @@
+<h1>Attach file</h1>
+<form action="/courses/addfile/<%= course.id %>" method="POST">
+
+	<div class='input-group'>
+		<label for="courseId">File: </label>
+		<select class="form-control" id="courseId" name="fileId">
+			  <% _.each(locals.files, function (file) { %>
+				  <option value="<%= file.id %>"><%=: file.filename %>
+				  </option>
+			  <% }) %>
+		</select>
+	</div>
+
+	<input type="hidden" name="courseId" value="<%= locals.course.id %>" />
+
+	<input class='btn btn-primary' type="submit"/>
+
+	<a class='btn btn-default' href="/courses/<%= locals.course.id %>">Back</a>
+
+</form>
